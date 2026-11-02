@@ -3,81 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time-Table</title>
+    <meta name="theme-color" content="#f5f6f2">
+    <title>College Timetable</title>
     <link rel="stylesheet" href="2nd.css">
 </head>
 <body>
-    <table border="1" style="text-align: center;">
-        <h2 style="text-align:center;">Time Table</h2>
-        <tr>
-            <th>Day/Time</th>
-            <th>9:30-10:30</th>
-            <th>10:30-11:30</th>
-            <th>11:30-11:45</th>
-            <th>11:45-12:45</th>
-            <th>12:45-1:30</th>
-            <th>1:30-2:15</th>
-            <th>2:15-3:15</th>
-            <th>3:15-4:15</th>
-        </tr>
-        <tr>
-            <td>Monday</td>
-            <td>TOC</td>
-            <td>CN</td>
-            <td  rowSpan="6" style="writing-mode:vertical-rl;text-orientation: upright;">Break</td>
-            <td>EVS</td>
-            <td>USP</td>
-            <td rowSpan="6" style="writing-mode:vertical-rl;text-orientation: upright;">Lunch</td>
-            <td>RM&IPR</td>
-            <td>LIBRARY</td>
+    <main class="page-shell">
+        <header class="page-header">
+            <a class="brand" href="#" aria-label="Campus timetable home">
+                <span class="brand-mark" aria-hidden="true">C</span>
+                <span>Campus<span class="brand-light"> / Planner</span></span>
+            </a>
+            <span class="term-label"><span class="status-dot"></span> WEEKLY SCHEDULE</span>
+        </header>
 
-        </tr>
-        <tr>
-            <td>Tuesday</td>
-            <td>CN</td>
-            <td>SEPM</td>
-         
-            <td  colSpan="2" style="text-align: center;">PE</td>
-        
-            <td>TOC</td>
-            <td>USP</td>
-        </tr>
-        <tr>
-            <td>Wednesday</td>
-            <td>RM&IPR</td>
-            <td>CN</td>
-            <td>SEPM</td>
-            <td>USP</td>
-            <td class="lab" colSpan="2" style="text-align: center;">CN A1/WEB A3</td>
-        </tr>
-        <tr>
-            <td>Thursday</td>
-            <td>EVS</td>
-            <td>SEPM</td>
-            <td>CN</td>
-            <td>TOC</td>
-            
-       
-            <td class="lab" colSpan="2" style="text-align: center;">CN A3/WEB A2</td>
-        </tr>
+        <section class="intro" aria-labelledby="page-title">
+            <div>
+                <p class="eyebrow">YOUR CLASSES, ORGANIZED</p>
+                <h1 id="page-title">College timetable<span>.</span></h1>
+                <p class="intro-copy">A clear view of your week, from the first lecture to the last lab.</p>
+            </div>
+            <button class="print-button" type="button" id="printButton">
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M6 7V3h8v4M6 14H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2M6 11h8v6H6z"/>
+                    <path d="M15 9h1"/>
+                </svg>
+                Print timetable
+            </button>
+        </section>
 
-        <tr>
-            <td>Friday</td>
-            <td>TOC</td>
-            <td>SEPM</td>
-              <td class="lab" colSpan="2" style="text-align: center;">CN A2/WEB A3</td>
-            <td>RM&IPR</td>
+        <section class="schedule-card" aria-label="Weekly class timetable">
+            <div class="schedule-toolbar">
+                <div class="schedule-heading">
+                    <span class="calendar-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3.5" y="5" width="17" height="16" rx="2"/>
+                            <path d="M7.5 3v4M16.5 3v4M3.5 9.5h17"/>
+                        </svg>
+                    </span>
+                    <div>
+                        <h2>Class schedule</h2>
+                        <p>Monday – Saturday <span aria-hidden="true">·</span> 9:30 AM – 4:15 PM</p>
+                    </div>
+                </div>
+                <div class="schedule-controls">
+                    <label class="sr-only" for="dayFilter">Filter by day</label>
+                    <select id="dayFilter">
+                        <option value="all">All days</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                    </select>
+                    <label class="search-box">
+                        <svg viewBox="0 0 20 20" aria-hidden="true">
+                            <circle cx="8.8" cy="8.8" r="5.8"/>
+                            <path d="m13.2 13.2 4 4"/>
+                        </svg>
+                        <span class="sr-only">Search classes</span>
+                        <input id="searchInput" type="search" placeholder="Find a class..." autocomplete="off">
+                    </label>
+                </div>
+            </div>
 
-            <td>USP</td>
-        </tr>
+            <div class="table-scroll">
+                <table>
+                    <caption class="sr-only">Weekly college class timetable from Monday through Saturday</caption>
+                    <thead>
+                        <tr>
+                            <th class="day-column" scope="col">DAY</th>
+                            <th scope="col">9:30 – 10:30</th>
+                            <th scope="col">10:30 – 11:30</th>
+                            <th class="pause-heading" scope="col">11:30 – 11:45</th>
+                            <th scope="col">11:45 – 12:45</th>
+                            <th scope="col">12:45 – 1:30</th>
+                            <th class="pause-heading" scope="col">1:30 – 2:15</th>
+                            <th scope="col">2:15 – 3:15</th>
+                            <th scope="col">3:15 – 4:15</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleBody">
+                        <tr data-day="Monday">
+                            <th class="day-name" scope="row">Monday<span class="today-label"></span></th>
+                            <td><span class="subject subject-blue">TOC</span></td>
+                            <td><span class="subject subject-purple">CN</span></td>
+                            <td class="pause-cell"><span>Break</span></td>
+                            <td><span class="subject subject-green">EVS</span></td>
+                            <td><span class="subject subject-amber">USP</span></td>
+                            <td class="pause-cell lunch-cell"><span>Lunch</span></td>
+                            <td><span class="subject subject-rose">RM &amp; IPR</span></td>
+                            <td><span class="subject subject-neutral">Library</span></td>
+                        </tr>
+                        <tr data-day="Tuesday">
+                            <th class="day-name" scope="row">Tuesday<span class="today-label"></span></th>
+                            <td><span class="subject subject-purple">CN</span></td>
+                            <td><span class="subject subject-orange">SEPM</span></td>
+                            <td class="pause-cell"><span>Break</span></td>
+                            <td colspan="2"><span class="subject subject-teal">PE</span></td>
+                            <td class="pause-cell lunch-cell"><span>Lunch</span></td>
+                            <td><span class="subject subject-blue">TOC</span></td>
+                            <td><span class="subject subject-amber">USP</span></td>
+                        </tr>
+                        <tr data-day="Wednesday">
+                            <th class="day-name" scope="row">Wednesday<span class="today-label"></span></th>
+                            <td><span class="subject subject-rose">RM &amp; IPR</span></td>
+                            <td><span class="subject subject-purple">CN</span></td>
+                            <td class="pause-cell"><span>Break</span></td>
+                            <td><span class="subject subject-orange">SEPM</span></td>
+                            <td><span class="subject subject-amber">USP</span></td>
+                            <td class="pause-cell lunch-cell"><span>Lunch</span></td>
+                            <td colspan="2"><span class="subject subject-lab">CN A1 / WEB A3</span></td>
+                        </tr>
+                        <tr data-day="Thursday">
+                            <th class="day-name" scope="row">Thursday<span class="today-label"></span></th>
+                            <td><span class="subject subject-green">EVS</span></td>
+                            <td><span class="subject subject-orange">SEPM</span></td>
+                            <td class="pause-cell"><span>Break</span></td>
+                            <td><span class="subject subject-purple">CN</span></td>
+                            <td><span class="subject subject-blue">TOC</span></td>
+                            <td class="pause-cell lunch-cell"><span>Lunch</span></td>
+                            <td colspan="2"><span class="subject subject-lab">CN A3 / WEB A2</span></td>
+                        </tr>
+                        <tr data-day="Friday">
+                            <th class="day-name" scope="row">Friday<span class="today-label"></span></th>
+                            <td><span class="subject subject-blue">TOC</span></td>
+                            <td><span class="subject subject-orange">SEPM</span></td>
+                            <td class="pause-cell"><span>Break</span></td>
+                            <td colspan="2"><span class="subject subject-lab">CN A2 / WEB A3</span></td>
+                            <td class="pause-cell lunch-cell"><span>Lunch</span></td>
+                            <td><span class="subject subject-rose">RM &amp; IPR</span></td>
+                            <td><span class="subject subject-amber">USP</span></td>
+                        </tr>
+                        <tr data-day="Saturday">
+                            <th class="day-name" scope="row">Saturday<span class="today-label"></span></th>
+                            <td><span class="subject subject-purple">CN</span></td>
+                            <td><span class="subject subject-purple">CN</span></td>
+                            <td class="pause-cell"><span>Break</span></td>
+                            <td colspan="2"><span class="subject subject-teal">Department activity</span></td>
+                            <td class="pause-cell lunch-cell"><span>Lunch</span></td>
+                            <td colspan="2"><span class="subject subject-neutral">Open slot</span></td>
+                        </tr>
+                        <tr class="empty-state" id="emptyState" hidden>
+                            <td colspan="9">No classes match your search.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-        <tr>
-            <td>Saturday</td>
-            
-            <td>CN</td>
-            <td>CN</td>
-            <td colspan="2" style="text-align: center;">DEPARTMENT ACTIVITY</td>
-            <td colspan="2"></td>
-    </table>
+            <footer class="schedule-footer">
+                <div class="legend">
+                    <span><i class="legend-dot lecture-dot"></i>Lectures</span>
+                    <span><i class="legend-dot lab-dot"></i>Labs</span>
+                    <span><i class="legend-dot break-dot"></i>Breaks</span>
+                </div>
+                <p id="resultCount" aria-live="polite">6 days scheduled</p>
+            </footer>
+        </section>
+        <p class="page-note">Times and subjects are shown in your college's weekly schedule.</p>
+    </main>
+
+    <script>
+        const dayFilter = document.querySelector("#dayFilter");
+        const searchInput = document.querySelector("#searchInput");
+        const scheduleRows = [...document.querySelectorAll("#scheduleBody tr[data-day]")];
+        const emptyState = document.querySelector("#emptyState");
+        const resultCount = document.querySelector("#resultCount");
+
+        function updateSchedule() {
+            const selectedDay = dayFilter.value;
+            const query = searchInput.value.trim().toLowerCase();
+            let visibleCount = 0;
+
+            scheduleRows.forEach((row) => {
+                const matchesDay = selectedDay === "all" || row.dataset.day === selectedDay;
+                const matchesSearch = row.textContent.toLowerCase().includes(query);
+                const isVisible = matchesDay && matchesSearch;
+                row.hidden = !isVisible;
+                if (isVisible) visibleCount += 1;
+            });
+
+            emptyState.hidden = visibleCount > 0;
+            resultCount.textContent = `${visibleCount} ${visibleCount === 1 ? "day" : "days"} shown`;
+        }
+
+        const today = new Date().toLocaleDateString("en-US", { weekday: "long" });
+        const todayRow = scheduleRows.find((row) => row.dataset.day === today);
+        if (todayRow) {
+            todayRow.classList.add("is-today");
+            todayRow.querySelector(".today-label").textContent = "TODAY";
+        }
+
+        dayFilter.addEventListener("change", updateSchedule);
+        searchInput.addEventListener("input", updateSchedule);
+        document.querySelector("#printButton").addEventListener("click", () => window.print());
+    </script>
 </body>
 </html>
