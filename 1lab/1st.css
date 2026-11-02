@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Header{
+    color: pink;
+    background-color: black;
+    animation-name: header;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes header{
+    0%{
+        color: rgb(141, 8, 30);
+        background-color: black;
+    }
+    50%{
+        color: black;
+        background-color: pink;
+    }
+    100%{
+        color: pink;
+        background-color: black;
+    }
+}

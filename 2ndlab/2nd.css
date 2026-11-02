@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h2{
+    color: blue;
+    background-color: yellow;
+    position:relative;
+    text-align: left;
+}
+table{
+    background-color: antiquewhite;
+    display: block;
+    align-items: center;
+    align-content: center;
+}
+
+th{
+    background-color: lightgray;
+    color:blue  ;
+    text-align: center;
+}
+
+.lab{
+    background-color: rgb(253, 84, 6);
+}
