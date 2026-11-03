@@ -4,4 +4,10 @@ h1{
     text-align: center;
     align-items: center;
     font-size: 50px;
+
+    span{
+        color: blue;
+    }
+    color: green;
+    stroke-width: 0%;
 }
