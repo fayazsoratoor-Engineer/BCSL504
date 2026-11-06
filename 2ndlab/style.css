@@ -3,4 +3,6 @@
     font-family: 'Courier New', Courier, monospace;
     visibility: hidden;
     grid-template-columns: 1fr 1fr;
+    font-size:20px;
+    
 }
